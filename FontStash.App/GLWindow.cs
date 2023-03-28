@@ -184,6 +184,14 @@ namespace App
             FontStash.fonsSetColor(ref fs, white);
             dx = FontStash.fonsDrawText(ref fs, dx, dy, "AAA DEF");
 
+            dx = sx;
+            dy += lh;
+
+            FontStash.fonsSetSize(ref fs, 124.0f);
+            FontStash.fonsSetFont(ref fs, fontNormal);
+            FontStash.fonsSetColor(ref fs, white);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "AAA DWS");
+
             //if (debug)
             FontStash.fonsDrawDebug(fs, 800.0f, 50.0f);
 
