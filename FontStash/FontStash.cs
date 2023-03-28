@@ -64,13 +64,13 @@ namespace Core
                 fons__flush(stash);
 
             // Draw background
-            //fons__vertex(stash, x + 0, y + 0, u, v, 0x0fffffff);
-            //fons__vertex(stash, x + w, y + h, u, v, 0x0fffffff);
-            //fons__vertex(stash, x + w, y + 0, u, v, 0x0fffffff);
+            fons__vertex(stash, x + 0, y + 0, u, v, 0x0fffffff);
+            fons__vertex(stash, x + w, y + h, u, v, 0x0fffffff);
+            fons__vertex(stash, x + w, y + 0, u, v, 0x0fffffff);
 
-            //fons__vertex(stash, x + 0, y + 0, u, v, 0x0fffffff);
-            //fons__vertex(stash, x + 0, y + h, u, v, 0x0fffffff);
-            //fons__vertex(stash, x + w, y + h, u, v, 0x0fffffff);
+            fons__vertex(stash, x + 0, y + 0, u, v, 0x0fffffff);
+            fons__vertex(stash, x + 0, y + h, u, v, 0x0fffffff);
+            fons__vertex(stash, x + w, y + h, u, v, 0x0fffffff);
 
             // Draw texture
             fons__vertex(stash, x + 0, y + 0, 0, 0, 0xffffffff);
