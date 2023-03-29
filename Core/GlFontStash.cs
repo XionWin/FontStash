@@ -14,6 +14,7 @@ namespace Core
     }
     public class GlFontStash
     {
+        public static Dictionary<string, int> Locations = new Dictionary<string, int>();
         public static FONScontext glfonsCreate(int width, int height, FONSflags flags)
         {
             FONSparams fparams;
@@ -104,14 +105,15 @@ namespace Core
 
 
             GL.BufferData(BufferTarget.ArrayBuffer, nverts * 8 * sizeof(float), verts, BufferUsageHint.StaticDraw);
-            var posLocation = 0;
+
+            
+            var posLocation = Locations["aPos"];
             GL.EnableVertexAttribArray(posLocation);
             GL.VertexAttribPointer(posLocation, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
-            var texCoordLocation = 1;
+            var texCoordLocation = Locations["aTexCoord"];
             GL.EnableVertexAttribArray(texCoordLocation);
             GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 2 * sizeof(float));
-
-            var colorLocation = 2;
+            var colorLocation = Locations["aColor"]; ;
             GL.EnableVertexAttribArray(colorLocation);
             GL.VertexAttribPointer(colorLocation, 4, VertexAttribPointerType.Float, false, 8 * sizeof(float), 4 * sizeof(float));
 

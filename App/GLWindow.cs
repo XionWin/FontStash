@@ -95,6 +95,10 @@ namespace App
             this.Shader.Use();
             this._uniformViewPort = GL.GetUniformLocation(this.Shader.ProgramHandle, "aViewport");
 
+            GlFontStash.Locations.Add("aPos", GL.GetAttribLocation(Shader.ProgramHandle, "aPos"));
+            GlFontStash.Locations.Add("aTexCoord", GL.GetAttribLocation(Shader.ProgramHandle, "aTexCoord"));
+            GlFontStash.Locations.Add("aColor", GL.GetAttribLocation(Shader.ProgramHandle, "aColor"));
+
         }
 
         #endregion
@@ -148,10 +152,6 @@ namespace App
             GL.ClearColor(0.3f, 0.3f, 0.32f, 1.0f);
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-
-            var posLocation = GL.GetAttribLocation(Shader.ProgramHandle, "aPos");
-            var texCoordLocation = GL.GetAttribLocation(Shader.ProgramHandle, "aTexCoord");
-            var colorLocation = GL.GetAttribLocation(Shader.ProgramHandle, "aColor");
 
             GL.ActiveTexture(TextureUnit.Texture0);
             this.Shader.Uniform1("texture0", 0);
