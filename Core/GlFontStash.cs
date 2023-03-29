@@ -105,14 +105,13 @@ namespace Core
 
 
             List<float> data = new List<float>();
-
             for (int i = 0; i < nverts * 2; i+=2)
             {
                 data.Add(verts[i]);
                 data.Add(verts[i + 1]);
                 data.Add(tcoords[i]);
                 data.Add(tcoords[i + 1]);
-                uint color = colors[nverts / 2];
+                uint color = colors[i / 2];
                 data.Add((float)(byte)(color) / 255);
                 data.Add((float)(byte)(color >> 8 * 1) / 255);
                 data.Add((float)(byte)(color >> 8 * 2) / 255);
