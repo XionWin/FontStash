@@ -76,6 +76,22 @@ namespace App
                 throw new Exception("Could not add font normal.\n");
             }
 
+            fontItalic = FontStash.fonsAddFont(fs, "sans-italic", "Resources/DroidSerif-Italic.ttf");
+            if (fontItalic == FontStash.FONS_INVALID)
+            {
+                throw new Exception("Could not add font italic.\n");
+            }
+            fontBold = FontStash.fonsAddFont(fs, "sans-bold", "Resources/DroidSerif-Bold.ttf");
+            if (fontBold == FontStash.FONS_INVALID)
+            {
+                throw new Exception("Could not add font bold.\n");
+            }
+            fontJapanese = FontStash.fonsAddFont(fs, "sans-jp", "Resources/DroidSansJapanese.ttf");
+            if (fontJapanese == FontStash.FONS_INVALID)
+            {
+                throw new Exception("Could not add font japanese.\n");
+            }
+
             this.Shader.Use();
             this._uniformViewPort = GL.GetUniformLocation(this.Shader.ProgramHandle, "aViewport");
 
@@ -135,6 +151,7 @@ namespace App
 
             var posLocation = GL.GetAttribLocation(Shader.ProgramHandle, "aPos");
             var texCoordLocation = GL.GetAttribLocation(Shader.ProgramHandle, "aTexCoord");
+            var colorLocation = GL.GetAttribLocation(Shader.ProgramHandle, "aColor");
 
             GL.ActiveTexture(TextureUnit.Texture0);
             this.Shader.Uniform1("texture0", 0);

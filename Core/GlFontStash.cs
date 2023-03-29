@@ -112,6 +112,11 @@ namespace Core
                 data.Add(verts[i + 1]);
                 data.Add(tcoords[i]);
                 data.Add(tcoords[i + 1]);
+                uint color = colors[nverts / 2];
+                data.Add((float)(byte)(color) / 255);
+                data.Add((float)(byte)(color >> 8 * 1) / 255);
+                data.Add((float)(byte)(color >> 8 * 2) / 255);
+                data.Add((float)(byte)(color >> 8 * 3) / 255);
             }
 
             var dataArray = data.ToArray();
@@ -119,10 +124,15 @@ namespace Core
             GL.BufferData(BufferTarget.ArrayBuffer, dataArray.Length * sizeof(float), dataArray, BufferUsageHint.StaticDraw);
             var posLocation = 0;
             GL.EnableVertexAttribArray(posLocation);
-            GL.VertexAttribPointer(posLocation, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 0);
+            GL.VertexAttribPointer(posLocation, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
             var texCoordLocation = 1;
             GL.EnableVertexAttribArray(texCoordLocation);
-            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 4 * sizeof(float), 2 * sizeof(float));
+            GL.VertexAttribPointer(texCoordLocation, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 2 * sizeof(float));
+
+            var colorLocation = 2;
+            GL.EnableVertexAttribArray(colorLocation);
+            GL.VertexAttribPointer(colorLocation, 4, VertexAttribPointerType.Float, false, 8 * sizeof(float), 4 * sizeof(float));
+
 
 
             //GL.EnableClientState(ArrayCap.VertexArray);
