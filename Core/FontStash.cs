@@ -7,8 +7,7 @@ namespace Core
     public delegate int RenderCreateHandler(object uptr, int width, int height);
     public delegate int RenderResizeHandler(object uptr, int width, int height);
     public delegate void RenderUpdateHandler(object uptr, ref int[] rect, byte[] data);
-    public delegate void RenderDrawHandler(object uptr, float[] verts, float[] tcoords,
-                                           uint[] colors, int nverts);
+    public delegate void RenderDrawHandler(object uptr, float[] verts, int nverts);
     public delegate void RenderDeleteHandler(object uptr);
 
     public static class FontStash
@@ -18,7 +17,7 @@ namespace Core
         public const uint FONS_INIT_FONTS = 4;
         public const uint FONS_INIT_GLYPHS = 256;
         public const uint FONS_INIT_ATLAS_NODES = 256;
-        public const uint FONS_VERTEX_COUNT = 1024;
+        public const uint FONS_VERTEX_COUNT = 2048;
         public const uint FONS_MAX_STATES = 20;
         public const int FONS_INVALID = -1;
         public const int FONS_MAX_FALLBACKS = 20;
@@ -1005,7 +1004,7 @@ namespace Core
         static void fons__flush(FONScontext stash)
         {
             // Flush texture
-            if (true || stash.dirtyRect[0] < stash.dirtyRect[2] && stash.dirtyRect[1] < stash.dirtyRect[3])
+            if (stash.dirtyRect[0] < stash.dirtyRect[2] && stash.dirtyRect[1] < stash.dirtyRect[3])
             {
                 // TODO
                 if (stash.@params.renderUpdate != null)
@@ -1021,7 +1020,7 @@ namespace Core
             if (stash.nverts > 0)
             {
                 if (stash.@params.renderDraw != null)
-                    stash.@params.renderDraw(stash.@params.userPtr, stash.verts, stash.tcoords, stash.colors, stash.nverts);
+                    stash.@params.renderDraw(stash.@params.userPtr, stash.verts, stash.nverts);
                 stash.nverts = 0;
             }
         }
@@ -1141,11 +1140,18 @@ namespace Core
 
         static void fons__vertex(FONScontext stash, float x, float y, float s, float t, uint c)
         {
-            stash.verts[stash.nverts * 2 + 0] = x;
-            stash.verts[stash.nverts * 2 + 1] = y;
-            stash.tcoords[stash.nverts * 2 + 0] = s;
-            stash.tcoords[stash.nverts * 2 + 1] = t;
-            stash.colors[stash.nverts] = c;
+            stash.verts[stash.nverts * 8 + 0] = x;
+            stash.verts[stash.nverts * 8 + 1] = y;
+            stash.verts[stash.nverts * 8 + 2] = s;
+            stash.verts[stash.nverts * 8 + 3] = t;
+
+            stash.verts[stash.nverts * 8 + 4] = (float)(byte)(c >> 8 * 0) / 255;
+            stash.verts[stash.nverts * 8 + 5] = (float)(byte)(c >> 8 * 1) / 255;
+            stash.verts[stash.nverts * 8 + 6] = (float)(byte)(c >> 8 * 2) / 255;
+            stash.verts[stash.nverts * 8 + 7] = (float)(byte)(c >> 8 * 3) / 255;
+            //stash.tcoords[stash.nverts * 2 + 0] = s;
+            //stash.tcoords[stash.nverts * 2 + 1] = t;
+            //stash.colors[stash.nverts] = c;
             stash.nverts++;
         }
 
@@ -1636,9 +1642,9 @@ namespace Core
         //[FONS_VERTEX_COUNT*2];
         public float[] verts;
         //[FONS_VERTEX_COUNT*2];
-        public float[] tcoords;
+        //public float[] tcoords;
         //[FONS_VERTEX_COUNT];
-        public uint[] colors;
+        //public uint[] colors;
         public int nverts;
         public byte[] scratch;
         public int nscratch;
@@ -1652,8 +1658,8 @@ namespace Core
         {
             dirtyRect = new int[4];
             verts = new float[FontStash.FONS_VERTEX_COUNT * 2];
-            tcoords = new float[FontStash.FONS_VERTEX_COUNT * 2];
-            colors = new uint[FontStash.FONS_VERTEX_COUNT];
+            //tcoords = new float[FontStash.FONS_VERTEX_COUNT * 2];
+            //colors = new uint[FontStash.FONS_VERTEX_COUNT];
             states = new FONSstate[FontStash.FONS_MAX_STATES];
             for (int cont = 0; cont < FontStash.FONS_MAX_STATES; cont++)
                 states[cont] = new FONSstate();

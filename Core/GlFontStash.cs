@@ -90,8 +90,7 @@ namespace Core
 
             //GL.PopClientAttrib();
         }
-        public static void glfons__renderDraw(object userPtr, float[] verts, float[] tcoords,
-                                              uint[] colors, int nverts)
+        public static void glfons__renderDraw(object userPtr, float[] verts, int nverts)
         {
             GLFONScontext gl = (GLFONScontext)userPtr;
             if (gl.tex == 0)
@@ -104,23 +103,7 @@ namespace Core
             GL.Enable(EnableCap.Texture2D);
 
 
-            List<float> data = new List<float>();
-            for (int i = 0; i < nverts * 2; i+=2)
-            {
-                data.Add(verts[i]);
-                data.Add(verts[i + 1]);
-                data.Add(tcoords[i]);
-                data.Add(tcoords[i + 1]);
-                uint color = colors[i / 2];
-                data.Add((float)(byte)(color) / 255);
-                data.Add((float)(byte)(color >> 8 * 1) / 255);
-                data.Add((float)(byte)(color >> 8 * 2) / 255);
-                data.Add((float)(byte)(color >> 8 * 3) / 255);
-            }
-
-            var dataArray = data.ToArray();
-
-            GL.BufferData(BufferTarget.ArrayBuffer, dataArray.Length * sizeof(float), dataArray, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, nverts * 8 * sizeof(float), verts, BufferUsageHint.StaticDraw);
             var posLocation = 0;
             GL.EnableVertexAttribArray(posLocation);
             GL.VertexAttribPointer(posLocation, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
