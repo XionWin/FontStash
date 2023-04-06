@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Core
+﻿namespace Core
 {
     public static class TrueType
     {
@@ -822,7 +816,7 @@ namespace Core
                     // now process all active edges in XOR fashion
                     if (activeIsNext.next != null)
                         stbtt__fill_active_edges(scanline, result.w, activeIsNext.next, max_weight);
-
+                    
                     ++y;
                 }
                 //STBTT_memcpy(result.pixels + j * result.stride, scanline, result.w);
