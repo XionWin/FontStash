@@ -163,7 +163,7 @@ namespace Core
             stash.dirtyRect[3] = 0;
 
             // Add white rect at 0,0 for debug drawing.
-            fons__addWhiteRect(ref stash, 2, 2);
+            fons__addWhiteRect(ref stash, 480, 200);
 
             fonsPushState(ref stash);
             fonsClearState(ref stash);
@@ -1190,6 +1190,8 @@ namespace Core
             return TrueType.stbtt_ScaleForPixelHeight(ref font.font, size);
         }
 
+
+        public static void AddWhiteRect(ref FONScontext stash, int w, int h) => fons__addWhiteRect(ref stash, w, h);
         static void fons__addWhiteRect(ref FONScontext stash, int w, int h)
         {
             int x, y, gx = 0, gy = 0;
@@ -1204,7 +1206,7 @@ namespace Core
             {
                 for (x = 0; x < w; x++)
                     dst[pointer + x] = (byte)0xff;
-                pointer += (byte)stash.@params.width;
+                pointer += stash.@params.width;
             }
 
             stash.dirtyRect[0] = fons__mini(stash.dirtyRect[0], gx);
