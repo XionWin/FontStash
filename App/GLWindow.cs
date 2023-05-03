@@ -313,7 +313,7 @@ namespace App
             //dx = FontStash.fonsDrawText(ref fs, dx, dy, "ABCDEFGHIGKLMN");
 
 
-            FontStash.fonsSetSize(ref fs, 12.0f);
+            FontStash.fonsSetSize(ref fs, 22.0f);
             FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
             dx = sx;
             dy += lh * 1.2f;
