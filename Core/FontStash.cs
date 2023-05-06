@@ -62,24 +62,27 @@ namespace Core
             if (stash.nverts + 6 + 6 > FONS_VERTEX_COUNT)
                 fons__flush(stash);
 
+            uint bgColor = 0xFFFFFF0F;
             // Draw background
-            fons__vertex(stash, x + 0, y + 0, 0, 0, 0x0fffffff);
-            fons__vertex(stash, x + w, y + h, 0, 0, 0x0fffffff);
-            fons__vertex(stash, x + w, y + 0, 0, 0, 0x0fffffff);
+            fons__vertex(stash, x + 0, y + 0, 0, 0, bgColor);
+            fons__vertex(stash, x + w, y + h, 0, 0, bgColor);
+            fons__vertex(stash, x + w, y + 0, 0, 0, bgColor);
 
-            fons__vertex(stash, x + 0, y + 0, 0, 0, 0x0fffffff);
-            fons__vertex(stash, x + 0, y + h, 0, 0, 0x0fffffff);
-            fons__vertex(stash, x + w, y + h, 0, 0, 0x0fffffff);
+            fons__vertex(stash, x + 0, y + 0, 0, 0, bgColor);
+            fons__vertex(stash, x + 0, y + h, 0, 0, bgColor);
+            fons__vertex(stash, x + w, y + h, 0, 0, bgColor);
 
+            uint textureColor = 0xFFFFFFFF;
             //// Draw texture
-            fons__vertex(stash, x + 0, y + 0, 0, 0, 0xffffffff);
-            fons__vertex(stash, x + w, y + h, 1, 1, 0xffffffff);
-            fons__vertex(stash, x + w, y + 0, 1, 0, 0xffffffff);
+            fons__vertex(stash, x + 0, y + 0, 0, 0, textureColor);
+            fons__vertex(stash, x + w, y + h, 1, 1, textureColor);
+            fons__vertex(stash, x + w, y + 0, 1, 0, textureColor);
 
-            fons__vertex(stash, x + 0, y + 0, 0, 0, 0xffffffff);
-            fons__vertex(stash, x + 0, y + h, 0, 1, 0xffffffff);
-            fons__vertex(stash, x + w, y + h, 1, 1, 0xffffffff);
+            fons__vertex(stash, x + 0, y + 0, 0, 0, textureColor);
+            fons__vertex(stash, x + 0, y + h, 0, 1, textureColor);
+            fons__vertex(stash, x + w, y + h, 1, 1, textureColor);
 
+            uint redColor = 0xFF0000FF;
             // Drawbug draw atlas
             for (i = 0; i < stash.atlas.nnodes; i++)
             {
@@ -88,13 +91,13 @@ namespace Core
                 if (stash.nverts + 6 > FONS_VERTEX_COUNT)
                     fons__flush(stash);
 
-                fons__vertex(stash, x + n.x + 0, y + n.y + 0, u, v, 0xc00000ff);
-                fons__vertex(stash, x + n.x + n.width, y + n.y + 1, u, v, 0xc00000ff);
-                fons__vertex(stash, x + n.x + n.width, y + n.y + 0, u, v, 0xc00000ff);
+                fons__vertex(stash, x + n.x + 0, y + n.y + 0, u, v, redColor);
+                fons__vertex(stash, x + n.x + n.width, y + n.y + 1, u, v, redColor);
+                fons__vertex(stash, x + n.x + n.width, y + n.y + 0, u, v, redColor);
 
-                fons__vertex(stash, x + n.x + 0, y + n.y + 0, u, v, 0xc00000ff);
-                fons__vertex(stash, x + n.x + 0, y + n.y + 1, u, v, 0xc00000ff);
-                fons__vertex(stash, x + n.x + n.width, y + n.y + 1, u, v, 0xc00000ff);
+                fons__vertex(stash, x + n.x + 0, y + n.y + 0, u, v, redColor);
+                fons__vertex(stash, x + n.x + 0, y + n.y + 1, u, v, redColor);
+                fons__vertex(stash, x + n.x + n.width, y + n.y + 1, u, v, redColor);
             }
 
             fons__flush(stash);
@@ -1145,10 +1148,10 @@ namespace Core
             stash.verts[stash.nverts * 8 + 2] = s;
             stash.verts[stash.nverts * 8 + 3] = t;
 
-            stash.verts[stash.nverts * 8 + 4] = (float)(byte)(c >> 8 * 0) / 255;
-            stash.verts[stash.nverts * 8 + 5] = (float)(byte)(c >> 8 * 1) / 255;
-            stash.verts[stash.nverts * 8 + 6] = (float)(byte)(c >> 8 * 2) / 255;
-            stash.verts[stash.nverts * 8 + 7] = (float)(byte)(c >> 8 * 3) / 255;
+            stash.verts[stash.nverts * 8 + 4] = (float)(byte)(c >> 8 * 3) / 255;
+            stash.verts[stash.nverts * 8 + 5] = (float)(byte)(c >> 8 * 2) / 255;
+            stash.verts[stash.nverts * 8 + 6] = (float)(byte)(c >> 8 * 1) / 255;
+            stash.verts[stash.nverts * 8 + 7] = (float)(byte)(c >> 8 * 0) / 255;
             //stash.tcoords[stash.nverts * 2 + 0] = s;
             //stash.tcoords[stash.nverts * 2 + 1] = t;
             //stash.colors[stash.nverts] = c;

@@ -148,7 +148,9 @@ namespace Core
         }
         public static uint glfonsRGBA(byte r, byte g, byte b, byte a)
         {
-            return (uint)((r) | (g << 8) | (b << 16) | (a << 24));
+            //return (uint)((r) | (g << 8) | (b << 16) | (a << 24));
+
+            return (uint)((a) | (b << 8) | (g << 16) | (r << 24));
         }
     }
 }

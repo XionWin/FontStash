@@ -179,7 +179,7 @@ namespace App
             blue = GlFontStash.glfonsRGBA(0, 192, 255, 255);
             black = GlFontStash.glfonsRGBA(0, 0, 0, 255);
 
-            sx = 50;
+            sx = 10;
             sy = 50;
 
             dx = sx;
@@ -194,8 +194,8 @@ namespace App
             pf1 = 0;
             pf2 = 0;
             FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
-            dx = sx;
-            dy += lh;
+            //dx = sx;
+            //dy += lh;
             //dash(dx, dy);
 
             //FontStash.fonsSetSize(ref fs, 124.0f);
@@ -315,24 +315,20 @@ namespace App
 
             FontStash.fonsSetSize(ref fs, 22.0f);
             FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
-            dx = sx;
-            dy += lh * 1.2f;
-            //dash(dx, dy);
+            //dx = sx;
+            dy += lh / 2;
             FontStash.fonsSetFont(ref fs, fontItalic);
             FontStash.fonsSetColor(ref fs, brown);
             dx = FontStash.fonsDrawText(ref fs, dx, dy, "jumps");
 
-
-
             //if (debug)
-            FontStash.fonsDrawDebug(fs, 720.0f - 512.0f, 50.0f);
+            FontStash.fonsDrawDebug(fs, 720.0f - 512.0f - 10.0f, 50.0f);
 
-            if (isInited is false)
+            if (isInited is false) 
             {
                 FontStash.AddWhiteRect(ref fs, 512, 20);
                 isInited = true;
             }
-
 
             GL.Enable(EnableCap.DepthTest);
 
