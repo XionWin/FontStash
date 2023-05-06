@@ -175,7 +175,7 @@ namespace App
             GL.Enable(EnableCap.CullFace);
 
             white = GlFontStash.glfonsRGBA(255, 255, 255, 255);
-            brown = GlFontStash.glfonsRGBA(192, 128, 0, 128);
+            brown = GlFontStash.glfonsRGBA(192, 128, 0, 255);
             blue = GlFontStash.glfonsRGBA(0, 192, 255, 255);
             black = GlFontStash.glfonsRGBA(0, 0, 0, 255);
 
@@ -319,6 +319,7 @@ namespace App
             dy += lh * 1.2f;
             //dash(dx, dy);
             FontStash.fonsSetFont(ref fs, fontItalic);
+            FontStash.fonsSetColor(ref fs, brown);
             dx = FontStash.fonsDrawText(ref fs, dx, dy, "jumps");
 
 

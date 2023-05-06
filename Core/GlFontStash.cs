@@ -60,8 +60,8 @@ namespace Core
             gl.height = height;
             GL.ActiveTexture(TextureUnit.Texture0);
             GL.BindTexture(TextureTarget.Texture2D, gl.tex);
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba,
-                gl.width, gl.height, 0, PixelFormat.Red, PixelType.UnsignedByte, IntPtr.Zero);
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Alpha,
+                gl.width, gl.height, 0, PixelFormat.Alpha, PixelType.UnsignedByte, IntPtr.Zero);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
                 (int)TextureMinFilter.Linear);
             return 1;
@@ -87,7 +87,7 @@ namespace Core
             GL.PixelStore(PixelStoreParameter.UnpackSkipPixels, rect[0]);
             GL.PixelStore(PixelStoreParameter.UnpackSkipRows, rect[1]);
             GL.TexSubImage2D(TextureTarget.Texture2D, 0, rect[0], rect[1], w, h,
-                PixelFormat.Red, PixelType.UnsignedByte, data);
+                PixelFormat.Alpha, PixelType.UnsignedByte, data);
 
             //GL.PopClientAttrib();
         }
