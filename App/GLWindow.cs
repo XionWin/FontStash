@@ -325,7 +325,7 @@ namespace App
 
 
             //if (debug)
-            FontStash.fonsDrawDebug(fs, 760.0f, 50.0f);
+            FontStash.fonsDrawDebug(fs, 720.0f - 512.0f, 50.0f);
 
             if (isInited is false)
             {
