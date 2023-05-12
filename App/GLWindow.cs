@@ -68,7 +68,7 @@ namespace App
 
             fontNormal = FontStash.FONS_INVALID;
 
-            fs = GlFontStash.glfonsCreate(512, 512, FONSflags.FONS_ZERO_TOPLEFT);
+            fs = GlFontStash.glfonsCreate(Core.Canvas.Width, Core.Canvas.Height, FONSflags.FONS_ZERO_TOPLEFT);
 
             fontNormal = FontStash.fonsAddFont(fs, "sans", "Resources/DroidSerif-Regular.ttf");
             if (fontNormal == FontStash.FONS_INVALID)
@@ -313,22 +313,22 @@ namespace App
             //dx = FontStash.fonsDrawText(ref fs, dx, dy, "ABCDEFGHIGKLMN");
 
 
-            FontStash.fonsSetSize(ref fs, 22.0f);
+            FontStash.fonsSetSize(ref fs, 8.0f);
             FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
             //dx = sx;
             dy += lh / 2;
             FontStash.fonsSetFont(ref fs, fontItalic);
             FontStash.fonsSetColor(ref fs, brown);
-            dx = FontStash.fonsDrawText(ref fs, dx, dy, "jumps");
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "j");
 
             //if (debug)
-            FontStash.fonsDrawDebug(fs, 720.0f - 512.0f - 10.0f, 50.0f);
+            FontStash.fonsDrawDebug(fs, 720.0f - Core.Canvas.Width - 10.0f, 50.0f);
 
-            if (isInited is false) 
-            {
-                FontStash.AddWhiteRect(ref fs, 512, 20);
-                isInited = true;
-            }
+            // if (isInited is false) 
+            // {
+            //     FontStash.AddWhiteRect(ref fs, Core.Canvas.Width, 5);
+            //     isInited = true;
+            // }
 
             GL.Enable(EnableCap.DepthTest);
 

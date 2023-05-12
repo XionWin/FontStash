@@ -60,7 +60,7 @@ namespace Core
             gl.height = height;
             GL.ActiveTexture(TextureUnit.Texture0);
             GL.BindTexture(TextureTarget.Texture2D, gl.tex);
-            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Alpha,
+            GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba,
                 gl.width, gl.height, 0, PixelFormat.Alpha, PixelType.UnsignedByte, IntPtr.Zero);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter,
                 (int)TextureMinFilter.Linear);

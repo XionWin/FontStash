@@ -166,7 +166,7 @@ namespace Core
             stash.dirtyRect[3] = 0;
 
             // Add white rect at 0,0 for debug drawing.
-            fons__addWhiteRect(ref stash, 480, 200);
+            fons__addWhiteRect(ref stash, 2, 2);
 
             fonsPushState(ref stash);
             fonsClearState(ref stash);

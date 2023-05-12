@@ -720,9 +720,9 @@
             int y, j = 0, eIndex = 0;
             int max_weight = (255 / vsubsample);  // weight per vertical scanline
             int s; // vertical subsample index
-            byte[] scanline_data = new byte[512], scanline;
+            byte[] scanline_data = new byte[Core.Canvas.Width], scanline;
 
-            if (result.w > 512)
+            if (result.w > Core.Canvas.Width)
             {
                 scanline = (byte[])userdata;
                 Array.Resize(ref scanline, result.w);
