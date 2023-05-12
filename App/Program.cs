@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            using (GLWindow glWin = new GLWindow("OpenTK-FontStash", 720, 720))
+            using (GLWindow glWin = new GLWindow("OpenTK-FontStash", 256, 256))
             {
                 glWin.Run();
             }

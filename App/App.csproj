@@ -17,6 +17,8 @@
     <None Remove="Resources\Roboto-Bold.ttf" />
     <None Remove="Resources\Roboto-Light.ttf" />
     <None Remove="Resources\Roboto-Regular.ttf" />
+    <None Remove="Resources\04b_08.ttf" />
+    <None Remove="Resources\pixelmix.ttf" />
     <None Remove="Shaders\FontStash.frag" />
     <None Remove="Shaders\FontStash.vert" />
   </ItemGroup>
@@ -47,6 +49,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Roboto-Regular.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\04b_08.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\pixelmix.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Shaders\FontStash.frag">

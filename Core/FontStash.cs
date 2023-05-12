@@ -62,7 +62,7 @@ namespace Core
             if (stash.nverts + 6 + 6 > FONS_VERTEX_COUNT)
                 fons__flush(stash);
 
-            uint bgColor = 0xFFFFFF0F;
+            uint bgColor = 0xFFFFFF2F;
             // Draw background
             fons__vertex(stash, x + 0, y + 0, 0, 0, bgColor);
             fons__vertex(stash, x + w, y + h, 0, 0, bgColor);

@@ -15,6 +15,7 @@ namespace App
         int fontItalic;
         int fontBold;
         int fontJapanese;
+        int fontPixel;
 
         public Shader Shader { get; init; }
         private int _uniformViewPort;
@@ -90,6 +91,11 @@ namespace App
             if (fontJapanese == FontStash.FONS_INVALID)
             {
                 throw new Exception("Could not add font japanese.\n");
+            }
+            fontPixel = FontStash.fonsAddFont(fs, "pixelmix", "Resources/pixelmix.ttf");
+            if (fontPixel == FontStash.FONS_INVALID)
+            {
+                throw new Exception("Could not add font pixelmix.\n");
             }
 
             this.Shader.Use();
@@ -317,12 +323,12 @@ namespace App
             FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
             //dx = sx;
             dy += lh / 2;
-            FontStash.fonsSetFont(ref fs, fontItalic);
+            FontStash.fonsSetFont(ref fs, fontPixel);
             FontStash.fonsSetColor(ref fs, brown);
-            dx = FontStash.fonsDrawText(ref fs, dx, dy, "j");
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "b");
 
             //if (debug)
-            FontStash.fonsDrawDebug(fs, 720.0f - Core.Canvas.Width - 10.0f, 50.0f);
+            FontStash.fonsDrawDebug(fs, this.Size.X - Core.Canvas.Width - 10.0f, 50.0f);
 
             // if (isInited is false) 
             // {
