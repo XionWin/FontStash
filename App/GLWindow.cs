@@ -325,7 +325,7 @@ namespace App
             dy += lh / 2;
             FontStash.fonsSetFont(ref fs, fontPixel);
             FontStash.fonsSetColor(ref fs, brown);
-            dx = FontStash.fonsDrawText(ref fs, dx, dy, "b");
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "B");
 
             //if (debug)
             FontStash.fonsDrawDebug(fs, this.Size.X - Core.Canvas.Width - 10.0f, 50.0f);

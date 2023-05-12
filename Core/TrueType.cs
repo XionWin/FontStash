@@ -819,9 +819,10 @@
                     
                     ++y;
                 }
-                //STBTT_memcpy(result.pixels + j * result.stride, scanline, result.w);
-                for (int cont = 0; cont < result.w; cont++)
-                    result.pixels[result.iPixels + cont + (j * result.stride)] = scanline[cont];
+                Array.Copy(scanline, 0, result.pixels, result.iPixels + (j * result.stride), result.w);
+                // STBTT_memcpy(result.pixels + j * result.stride, scanline, result.w);
+                // for (int cont = 0; cont < result.w; cont++)
+                //     result.pixels[result.iPixels + cont + (j * result.stride)] = scanline[cont];
                 ++j;
             }
 
