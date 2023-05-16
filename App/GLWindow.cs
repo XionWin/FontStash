@@ -92,10 +92,10 @@ namespace App
             {
                 throw new Exception("Could not add font japanese.\n");
             }
-            fontPixel = FontStash.fonsAddFont(fs, "pixelmix", "Resources/pixelmix.ttf");
+            fontPixel = FontStash.fonsAddFont(fs, "zpix", "Resources/Zpix.ttf");
             if (fontPixel == FontStash.FONS_INVALID)
             {
-                throw new Exception("Could not add font pixelmix.\n");
+                throw new Exception("Could not add font Zpix.\n");
             }
 
             this.Shader.Use();
@@ -200,132 +200,131 @@ namespace App
             pf1 = 0;
             pf2 = 0;
             FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
-            //dx = sx;
-            //dy += lh;
+            dx = sx;
+            dy += lh;
+
+            FontStash.fonsSetSize(ref fs, 124.0f);
+            FontStash.fonsSetFont(ref fs, fontNormal);
+            FontStash.fonsSetColor(ref fs, white);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "The quick ");
+
+            FontStash.fonsSetSize(ref fs, 48.0f);
+            FontStash.fonsSetFont(ref fs, fontItalic);
+            FontStash.fonsSetColor(ref fs, brown);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "brown ");
+
+            FontStash.fonsSetSize(ref fs, 24.0f);
+            FontStash.fonsSetFont(ref fs, fontNormal);
+            FontStash.fonsSetColor(ref fs, white);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "fox ");
+
+            FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
+            dx = sx;
+            dy += lh * 1.2f;
             //dash(dx, dy);
+            FontStash.fonsSetFont(ref fs, fontItalic);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "jumps over ");
+            FontStash.fonsSetFont(ref fs, fontBold);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "the lazy ");
+            FontStash.fonsSetFont(ref fs, fontNormal);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "dog.");
 
-            //FontStash.fonsSetSize(ref fs, 124.0f);
-            //FontStash.fonsSetFont(ref fs, fontNormal);
-            //FontStash.fonsSetColor(ref fs, white);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "The quick ");
+            dx = sx;
+            dy += lh * 1.2f;
+            //dash(dx, dy);
+            FontStash.fonsSetSize(ref fs, 12.0f);
+            FontStash.fonsSetFont(ref fs, fontNormal);
+            FontStash.fonsSetColor(ref fs, blue);
+            FontStash.fonsDrawText(ref fs, dx, dy, "Now is the time for all good men to come to the aid of the party.");
 
-            //FontStash.fonsSetSize(ref fs, 48.0f);
-            //FontStash.fonsSetFont(ref fs, fontItalic);
-            //FontStash.fonsSetColor(ref fs, brown);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "brown ");
+            FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
+            dx = sx;
+            dy += lh * 1.2f * 2;
+            //dash(dx, dy);
+            FontStash.fonsSetSize(ref fs, 18.0f);
+            FontStash.fonsSetFont(ref fs, fontItalic);
+            FontStash.fonsSetColor(ref fs, white);
+            FontStash.fonsDrawText(ref fs, dx, dy, "Ég get etið gler án þess að meiða mig.");
 
-            //FontStash.fonsSetSize(ref fs, 24.0f);
-            //FontStash.fonsSetFont(ref fs, fontNormal);
-            //FontStash.fonsSetColor(ref fs, white);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "fox ");
+            FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
+            dx = sx;
+            dy += lh * 1.2f;
+            //dash(dx, dy);
+            FontStash.fonsSetFont(ref fs, fontJapanese);
+            FontStash.fonsDrawText(ref fs, dx, dy, "私はガラスを食べられます。それは私を傷つけません。");
 
-            //FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
-            //dx = sx;
-            //dy += lh * 1.2f;
-            ////dash(dx, dy);
-            //FontStash.fonsSetFont(ref fs, fontItalic);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "jumps over ");
-            //FontStash.fonsSetFont(ref fs, fontBold);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "the lazy ");
-            //FontStash.fonsSetFont(ref fs, fontNormal);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "dog.");
+            // Font alignment
+            FontStash.fonsSetSize(ref fs, 18.0f);
+            FontStash.fonsSetFont(ref fs, fontNormal);
+            FontStash.fonsSetColor(ref fs, white);
 
-            //dx = sx;
-            //dy += lh * 1.2f;
-            ////dash(dx, dy);
-            //FontStash.fonsSetSize(ref fs, 12.0f);
-            //FontStash.fonsSetFont(ref fs, fontNormal);
-            //FontStash.fonsSetColor(ref fs, blue);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "Now is the time for all good men to come to the aid of the party.");
+            dx = 50;
+            dy = 350;
+            //line(dx - 10, dy, dx + 250, dy);
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_TOP);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "Top");
+            dx += 10;
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_MIDDLE);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "Middle");
+            dx += 10;
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BASELINE);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "Baseline");
+            dx += 10;
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BOTTOM);
+            FontStash.fonsDrawText(ref fs, dx, dy, "Bottom");
 
-            //FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
-            //dx = sx;
-            //dy += lh * 1.2f * 2;
-            ////dash(dx, dy);
-            //FontStash.fonsSetSize(ref fs, 18.0f);
-            //FontStash.fonsSetFont(ref fs, fontItalic);
-            //FontStash.fonsSetColor(ref fs, white);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "Ég get etið gler án þess að meiða mig.");
+            dx = 150;
+            dy = 400;
+            //line(dx, dy - 30, dx, dy + 80.0f);
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BASELINE);
+            FontStash.fonsDrawText(ref fs, dx, dy, "Left");
+            dy += 30;
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_CENTER | FONSalign.FONS_ALIGN_BASELINE);
+            FontStash.fonsDrawText(ref fs, dx, dy, "Center");
+            dy += 30;
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_RIGHT | FONSalign.FONS_ALIGN_BASELINE);
+            FontStash.fonsDrawText(ref fs, dx, dy, "Right");
 
-            //FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
-            //dx = sx;
-            //dy += lh * 1.2f;
-            ////dash(dx, dy);
-            //FontStash.fonsSetFont(ref fs, fontJapanese);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "私はガラスを食べられます。それは私を傷つけません。");
+            // Blur
+            dx = 500;
+            dy = 350;
+            FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BASELINE);
 
-            //// Font alignment
-            //FontStash.fonsSetSize(ref fs, 18.0f);
-            //FontStash.fonsSetFont(ref fs, fontNormal);
-            //FontStash.fonsSetColor(ref fs, white);
+            FontStash.fonsSetSize(ref fs, 60.0f);
+            FontStash.fonsSetFont(ref fs, fontItalic);
+            FontStash.fonsSetColor(ref fs, white);
+            FontStash.fonsSetSpacing(ref fs, 5.0f);
+            FontStash.fonsSetBlur(ref fs, 10.0f);
+            FontStash.fonsDrawText(ref fs, dx, dy, "Blurry...");
 
-            //dx = 50;
-            //dy = 350;
-            ////line(dx - 10, dy, dx + 250, dy);
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_TOP);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "Top");
-            //dx += 10;
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_MIDDLE);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "Middle");
-            //dx += 10;
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BASELINE);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "Baseline");
-            //dx += 10;
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BOTTOM);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "Bottom");
+            dy += 50.0f;
 
-            //dx = 150;
-            //dy = 400;
-            ////line(dx, dy - 30, dx, dy + 80.0f);
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BASELINE);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "Left");
-            //dy += 30;
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_CENTER | FONSalign.FONS_ALIGN_BASELINE);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "Center");
-            //dy += 30;
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_RIGHT | FONSalign.FONS_ALIGN_BASELINE);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "Right");
+            FontStash.fonsSetSize(ref fs, 18.0f);
+            FontStash.fonsSetFont(ref fs, fontBold);
+            FontStash.fonsSetColor(ref fs, black);
+            FontStash.fonsSetSpacing(ref fs, 0.0f);
+            FontStash.fonsSetBlur(ref fs, 3.0f);
+            FontStash.fonsDrawText(ref fs, dx, dy + 2, "DROP THAT SHADOW");
 
-            //// Blur
-            //dx = 500;
-            //dy = 350;
-            //FontStash.fonsSetAlign(fs, FONSalign.FONS_ALIGN_LEFT | FONSalign.FONS_ALIGN_BASELINE);
-
-            //FontStash.fonsSetSize(ref fs, 60.0f);
-            //FontStash.fonsSetFont(ref fs, fontItalic);
-            //FontStash.fonsSetColor(ref fs, white);
-            //FontStash.fonsSetSpacing(ref fs, 5.0f);
-            //FontStash.fonsSetBlur(ref fs, 10.0f);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "Blurry...");
-
-            //dy += 50.0f;
-
-            //FontStash.fonsSetSize(ref fs, 18.0f);
-            //FontStash.fonsSetFont(ref fs, fontBold);
-            //FontStash.fonsSetColor(ref fs, black);
-            //FontStash.fonsSetSpacing(ref fs, 0.0f);
-            //FontStash.fonsSetBlur(ref fs, 3.0f);
-            //FontStash.fonsDrawText(ref fs, dx, dy + 2, "DROP THAT SHADOW");
-
-            //FontStash.fonsSetColor(ref fs, white);
-            //FontStash.fonsSetBlur(ref fs, 0);
-            //FontStash.fonsDrawText(ref fs, dx, dy, "DROP THAT SHADOW");
+            FontStash.fonsSetColor(ref fs, white);
+            FontStash.fonsSetBlur(ref fs, 0);
+            FontStash.fonsDrawText(ref fs, dx, dy, "DROP THAT SHADOW");
 
 
 
-            //FontStash.fonsSetSize(ref fs, 124.0f);
-            //FontStash.fonsSetFont(ref fs, fontNormal);
-            //FontStash.fonsSetColor(ref fs, white);
-            //dx = FontStash.fonsDrawText(ref fs, dx, dy, "ABCDEFGHIGKLMN");
+            FontStash.fonsSetSize(ref fs, 124.0f);
+            FontStash.fonsSetFont(ref fs, fontNormal);
+            FontStash.fonsSetColor(ref fs, white);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "ABCDEFGHIGKLMN");
 
 
-            FontStash.fonsSetSize(ref fs, 8.0f);
+            FontStash.fonsSetSize(ref fs, 12.0f);
             FontStash.fonsVertMetrics(ref fs, ref pf1, ref pf2, ref lh);
             //dx = sx;
             dy += lh / 2;
             FontStash.fonsSetFont(ref fs, fontPixel);
-            FontStash.fonsSetColor(ref fs, brown);
-            dx = FontStash.fonsDrawText(ref fs, dx, dy, "B");
+            FontStash.fonsSetColor(ref fs, blue);
+            dx = FontStash.fonsDrawText(ref fs, dx, dy, "B像素字体");
 
             //if (debug)
             FontStash.fonsDrawDebug(fs, this.Size.X - Core.Canvas.Width - 10.0f, 50.0f);

@@ -816,7 +816,7 @@
                     // now process all active edges in XOR fashion
                     if (activeIsNext.next != null)
                         stbtt__fill_active_edges(scanline, result.w, activeIsNext.next, max_weight);
-                    
+
                     ++y;
                 }
                 Array.Copy(scanline, 0, result.pixels, result.iPixels + (j * result.stride), result.w);
@@ -1217,6 +1217,14 @@
         public short x, y, cx, cy;
         public STBTT_vmove type;
         public byte padding;
+
+
+        public short CenterX => this.cx;
+        public short CenterY => this.cy;
+        public short X => this.x;
+        public short Y => this.y;
+        public STBTT_vmove Type => this.type;
+        public byte Padding => this.padding;
     }
 
     public struct stbtt__bitmap

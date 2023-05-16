@@ -8,22 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\DroidSansJapanese.ttf" />
-    <None Remove="Resources\DroidSerif-Bold.ttf" />
-    <None Remove="Resources\DroidSerif-Italic.ttf" />
-    <None Remove="Resources\DroidSerif-Regular.ttf" />
-    <None Remove="Resources\entypo.ttf" />
-    <None Remove="Resources\NotoEmoji-Regular.ttf" />
-    <None Remove="Resources\Roboto-Bold.ttf" />
-    <None Remove="Resources\Roboto-Light.ttf" />
-    <None Remove="Resources\Roboto-Regular.ttf" />
-    <None Remove="Resources\04b_08.ttf" />
-    <None Remove="Resources\pixelmix.ttf" />
-    <None Remove="Shaders\FontStash.frag" />
-    <None Remove="Shaders\FontStash.vert" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Resources\DroidSansJapanese.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
@@ -55,6 +39,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\pixelmix.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Zpix.ttf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="Shaders\FontStash.frag">

@@ -1193,8 +1193,6 @@ namespace Core
             return TrueType.stbtt_ScaleForPixelHeight(ref font.font, size);
         }
 
-
-        public static void AddWhiteRect(ref FONScontext stash, int w, int h) => fons__addWhiteRect(ref stash, w, h);
         static void fons__addWhiteRect(ref FONScontext stash, int w, int h)
         {
             int x, y, gx = 0, gy = 0;
