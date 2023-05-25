@@ -700,6 +700,8 @@
                 }
             }
 
+            var data = System.Text.Json.JsonSerializer.Serialize(e);
+
             // now sort the edges by their highest point (should snap to integer, and then by x)
             //STBTT_sort(e, n, sizeof(e[0]), stbtt__edge_compare);
             // Sort the array
@@ -1251,6 +1253,12 @@
     {
         public float x0, y0, x1, y1;
         public int invert;
+
+        public float X0 => this.x0;
+        public float Y0 => this.y0;
+        public float X1 => this.x1;
+        public float Y1 => this.y1;
+        public int Invert => this.invert;
 
         public int CompareTo(object obj)
         {
